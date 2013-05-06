@@ -1,0 +1,235 @@
+\documentclass[a4paper]{article}
+\usepackage[top=.8in, bottom=.8in, left=.8in, right=.8in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+% use microtype if available
+\IfFileExists{microtype.sty}{\usepackage{microtype}}{}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \usepackage{fontspec}
+  \ifxetex
+    \usepackage{xltxtra,xunicode}
+  \fi
+  \defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
+  \newcommand{\euro}{€}
+\fi
+\ifxetex
+  \usepackage[setpagesize=false, % page size defined by xetex
+              unicode=false, % unicode breaks when used with xetex
+              xetex]{hyperref}
+\else
+  \usepackage[unicode=true]{hyperref}
+\fi
+\hypersetup{breaklinks=true,
+            bookmarks=true,
+            pdfauthor={},
+            pdftitle={},
+            colorlinks=true,
+            urlcolor=blue,
+            linkcolor=magenta,
+            pdfborder={0 0 0}}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\setcounter{secnumdepth}{0}
+
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\textsuperscript{1} Laboratory of Genetics, Department of Biology,
+University of Turku, Turku, Finland. Email:
+\href{mailto:mycalesis@gmail.com}{\texttt{mycalesis@gmail.com}}
+
+\textsuperscript{2}
+
+\textsuperscript{3}
+
+\textsuperscript{4}
+
+\subsection{Introduction}
+
+Next Generation Sequencing (NGS) is considered a quantum leap in
+improvement in techniques for DNA sequencing. The traditional Sanger
+method {[}@sanger1977{]} allows sequencing around \textasciitilde{}1,000
+bp per specimen in capillary-based machinery. This is almost meaningless
+when compared to the sequencing output of NGS technology: 30 gigabases
+of DNA in one single run {[}@reis2009{]}. This higher yield is achieved
+by using massive parallel sequencing of PCR products based on DNA
+systhensis on arrays of micron-scale beads on planar substrates (a
+microchip) {[}@shendure2008{]}. As a result, millions of copies of
+sequences (reads) are produced from the DNA templates. One application
+of NGS is targeted sequencing of numerous loci of interest
+{[}@ekblom2010{]} for several taxa, in one run, which is quicker and
+cheaper than using the traditional Sanger method.
+
+Indeed some studies have used NSG techniques to study phylogenetics at
+the genomic level using miRNAs for higher level phylogeny in Arthropoda
+{[}@campbell2011{]}. miRNAs are nonprotein coding RNAs of small length
+involved in transcription {[}ref{]}
+
+Research in Phylogenomics, using many more genes from genomes
+{[}@wahlberg2008{]}, would be accelerated by using NGS due to the ease
+to obtaining DNA data at massive scale. It would be very easy to
+sequence many more than the 12 to 19 loci that so far have been used
+phylogenomic studies {[}@wahlberg2008; @regier2013{]}.
+
+However, researchers have been relying on the Sanger method for
+sequencing a handful of genes to be used in phylogenetic inference in
+Lepidoptera groups {[}@matos2013; @regier2013; @pena2011{]}.
+
+One issue to develop is a way to obtain candidate genes suitable for
+phylogenetic inference, i.e.~orthologous, single copy genes, lack of
+introns, etc.
+
+\begin{itemize}
+\item
+  why orthologous
+\item
+  why single copy
+\item
+  why no introns
+\item
+  why separated by xxxx distance
+\end{itemize}
+
+@regier2013 obtained their sequences from mRNA by performing reverse
+transcription and PCR amplification {[}@regier2007{]}. mRNAs are
+molecules transcribed from genomic DNA that have had introns spliced and
+exons joined. Therefore, attempting to sequence these genes from genomic
+DNA for other species will be troublesome due to the likely appearance
+of introns. Intron sequences can be of various lengths across taxa and
+would prove difficult to assess homology for phylogenetic studies.
+
+@wahlberg2008 obtained candidate genes for phylogenomics by identifying
+single copy and orthologus genes of \emph{Bombyx mori} from EST
+libraries. EST sequences were searched in the \emph{Bombyx mori} genome
+in order to identify suitable exons. These exon sequences were compared
+against EST libraries of related Lepidoptera in order to obtain
+homologous sequences for primer design.
+
+\subsection{Other software}
+
+CEPiNS {[}@hasan2013{]} is a software pipeline that uses predicted gene
+sequences from both model and novel species to predict and identify
+exons suitable for sequencing useful for phylogenetic inference.
+
+\subsection{Exon models}
+
+\subsubsection{Finding candidate genes from \emph{Bombyx mori}}
+
+We need to obtain candidate genes to be used in phylogenetic inference
+that have to fulfill the following requirements:
+
+\begin{itemize}
+\item
+  Our genes should be orthologs.
+\item
+  Our genes should be single-copy genes.
+\item
+  Their sequence need to be around 251 DNA base pairs in length.
+\end{itemize}
+
+We will assume that our Next Generation Sequencer available is the
+IonTorrent\_.
+
+We have to consider the IonTorrent\_ platform requirements to arrive to
+our target 250bp gene length:
+
+\ctable[pos = H, center, botcap]{ll}
+{% notes
+}
+{% rows
+\FL
+Primer & Length (bp)
+\ML
+Adapter A & 30
+\\\noalign{\medskip}
+5' Index & 8
+\\\noalign{\medskip}
+5' Degenerate Primer & 25
+\\\noalign{\medskip}
+Exon & \textbf{???}
+\\\noalign{\medskip}
+3' Degenerate Primer & 25
+\\\noalign{\medskip}
+3' Index & 8
+\\\noalign{\medskip}
+Adapter P & 23
+\LL
+}
+
+For IonTorrent \url{http://www.iontorrent.com/} Platform 2, the maximum
+length that can be sequenced is from 280bp to 320bp in total. Thus,
+\texttt{320 - 119 = 201} is the maximum internal gene region (region
+within degenerate primers).
+
+Therefore, for the new set of primers, being designed for Platform2, we
+have a maximum amplicon size of \texttt{201 + 25*2 = 251bp}.
+
+The OrthoDB \url{ftp://cegg.unige.ch/OrthoDB6/} database has a catalog
+of orthologous protein-coding genes for vertebrates, arthropods and
+other living groups.
+
+\subsection{Action items}
+
+\subsubsection{Single Copy Genes}
+
+From OrthoDB and get a list of single-copy genes for \emph{Bombyx mori}
+Get the exon sequences from the CDS file for \emph{Bombyx} Use these CDS
+sequences to extract the corresponding sequence in the \emph{Bombyx}
+genome avoiding gaps so that we will only work with genes or gene
+fragments that do not include introns (which is good if you want to do
+phylogenetics).
+
+\subsection{Exon Structure}
+
+Comparison against other butterfly and moth genomes Exon validation
+against genomes of \emph{Manduca}, \emph{Danaus} and \emph{Heliconius}
+
+\subsection{Exon Aligment and Primer Design}
+
+Need to get at least 4 sequences for primer desing using primers4clades
+{[}@contreras2009{]}.
+
+\subsection{Wet Lab}
+
+\subsubsection{Multiplex PCR}
+
+\subsubsection{Sample preparation for Next Generation Sequencing in
+IonTorrent}
+
+\subsection{Next Generation output analysis}
+
+\subsubsection{find barcodes}
+
+\subsubsection{find primers}
+
+\subsubsection{quality control of reads}
+
+\subsubsection{de novo assembly using velvet}
+
+\subsubsection{alignment and storage in VoSeq?}
+
+So that we can manage the high number of sequences and create datasets
+for phylogenetic analysis very easily.
+
+\subsection{Comparison with other methods}
+
+@regier2009, @regier2008, @regier2013 use Reverse Transcription PCR from
+mRNAs to avoid sequencing introns, although the corresponing genomic DNA
+sequences are likely to include introns. Therefore if one use their
+genes, it is not recommended to do ``direct gene amplification''
+{[}@regier2007{]}.
+
+\section{References}
+
+Targeted sequencing {[}@godden2012{]}
+
+\end{document}
