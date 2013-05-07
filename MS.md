@@ -69,40 +69,79 @@ might contain numerous errors and are prone to artefacts [@parkinson2002].
 
 According to @wahlberg2008, it is easier to employ  genomic DNA for phylogenetic
 practice due to several reasons: (i) genomic DNA does not degrade so quickly as RNA;
-(ii) it is simpler to preserve in the field; (iii) it can be sequenced even
+(ii) it is simpler to preserve in the field; (iii) it can be sequenced even from
 dry material (for example museum specimens); and (iv) it is the most commonly used
 DNA in molecular systematics.
 
-Thus, we have developed a protocol for finding genes in genomicd  DNA suitable for
-phylogenomic studies. We have developped bioinformatic tools to help harvesting genes
+One strategy to fulfill this goal could be comparing genomic sequences of  model
+species and extract suitable genes that can be sequenced in novel species from its
+genomic DNA. 
+
+In this paper, we describe a protocol for finding genes in genomic DNA suitable for
+phylogenomic studies. We have developed bioinformatic tools to help harvesting genes
 from  genomes available in public databases. We have also optimized a wet lab protocol
-for sequencing those found genes using NGS technology and more bioinformatic tools
-for analyisis of the raw data from NGS. Our software has been developed to assemble
-the wanted sequences from the reads of the NGS machine so that datasets ready for
-anlysis in phylogenetic inference can be created.
+for sequencing the found genes using NGS technology. Additionally, we  have developed
+bioinformatic tools for analysis of the raw data from NGS. Our software has been
+developed to filter the output reads from NGS and assemble the sequences for each
+specimen and their sequenced genes so that datasets can be assembled for analysis in 
+common software for phylogenetic inference.
 
 
-## Other software
-CEPiNS [@hasan2013] is a software pipeline that uses predicted gene sequences
-from both model and novel species to predict and identify exons suitable for
-sequencing useful for phylogenetic inference.
+# Methods
+
+## Finding candidate genes from *Bombyx mori*
+
+We decided to use the *Bombyx mori* genome as starting point (although any genome can
+be used) to obtain candidate genes suitable for sequencing across novel species.
+As explaine in the introduction, genes to be used in phylogenetic inference have to
+fulfill the following requirements: (i) Our genes should be orthologs; (ii) Our genes
+should be single-copy genes; (iii) their sequence need to be around 251 DNA base pairs
+in length for easy sequencing in our Next Generation Sequencer available, IonTorrent_.
+
+The OrthoDB database <ftp://cegg.unige.ch/OrthoDB6/> has a catalog of orthologous
+protein-coding genes for vertebrates, arthropods and other living groups.
+
+We parsed this list with the module OrthoDB from our package PyPhyloGenomics and 
+obtained a list of single-copy, orthologous gene IDs for *Bombyx mori* (12 167 genes
+in total).
+
+By using the module BLAST of PyPhyloGenomics, we were able to obtain the gene sequence
+for our list from the CDS sequences for *Bombyx mori*. And this list of sequences
+were blasted against the *Bombyx mori* genome in order to make sure that our sequences
+are free of introns.
+
+We also filtered these genes to be at least 300bp in length, are separated by at least 
+810kb so that they can be considered independent evolutionary entities.
+
+At the end we obtained 575 exons in frame.
+
+Then we executed exon validation by searching these exons in other genomes of Lepidoptera
+species such as, *Danaus*, *Heliconius* and *Manduca*,
+
+This search is automated by using functions in our module BLAST that take as input 
+the list of genes from *Bombyx mori*, and the file with genomic sequences for the target
+species.
+
+PyPhyloGenomics also has tools to create fasta files for those exons that were found in
+the other species' genomes. It also automates the alignment by using MUSCLE.
+
+PyPhyloGenomics contains functions to automatically design degenerate primers from the
+homologous sequences by delivering the sequences to primer4clades and receiving the 
+designed primers.
+
+It is recomended that both alignment and designed primers to be analyzed carefully 
+to make sure that the are no problems.
+
+We have to consider the requirements for the IonTorrent platform 2 in order to arrive
+to our target 250bp gene length (Table 1).
 
 
+For IonTorrent <http://www.iontorrent.com/> Platform 2, the maximum length that can be sequenced is from 280bp to 320bp in total. Thus, ``320 - 119 = 201`` is the maximum internal gene region (region within degenerate primers).
 
+Therefore, for the new set of primers, being designed for Platform2, we have a maximum amplicon size of ``201 + 25*2 = 251bp``. 
 
-
-## Exon models 	
-### Finding candidate genes from *Bombyx mori*
-
-We need to obtain candidate genes to be used in phylogenetic inference that have to fulfill the following requirements:
-
-* Our genes should be orthologs.
-* Our genes should be single-copy genes.
-* Their sequence need to be around 251 DNA base pairs in length.
-
-We will assume that our Next Generation Sequencer available is the IonTorrent_.
-
-We have to consider the IonTorrent_ platform requirements to arrive to our target 250bp gene length:
+**Table 1.** Adaptors and primers needed for sequencing in the NGS Iontorrent platform 2. 
+The maximum length of sequenced amplicon is \~ 201 bp after discarding primer regions.
 
   Primer                Length (bp)
   --------------------  ------------
@@ -115,11 +154,17 @@ We have to consider the IonTorrent_ platform requirements to arrive to our targe
   Adapter P             23
   --------------------  ------------
 
-For IonTorrent <http://www.iontorrent.com/> Platform 2, the maximum length that can be sequenced is from 280bp to 320bp in total. Thus, ``320 - 119 = 201`` is the maximum internal gene region (region within degenerate primers).
 
-Therefore, for the new set of primers, being designed for Platform2, we have a maximum amplicon size of ``201 + 25*2 = 251bp``. 
 
-The OrthoDB <ftp://cegg.unige.ch/OrthoDB6/> database has a catalog of orthologous protein-coding genes for vertebrates, arthropods and other living groups.
+## Other software
+CEPiNS [@hasan2013] is a software pipeline that uses predicted gene sequences
+from both model and novel species to predict and identify exons suitable for
+sequencing useful for phylogenetic inference.
+
+
+
+
+
 
 
 ## Action items
