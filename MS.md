@@ -1,6 +1,6 @@
 % PyPhyloGenomics: toolkit and protocol for developing phylogenetic markers in novel species for Next Generation Sequence data
 % Carlos Peña^1^; Victor Solis^2^; Pável Matos^3^; Chris Wheat^4^
-% 2013-05-01
+% 2013-05-08
 
 ^1^ Laboratory of Genetics, Department of Biology, University of Turku, Turku, Finland. Email: <mycalesis@gmail.com>
 
@@ -25,10 +25,9 @@ One application of NGS is targeted sequencing of numerous loci of interest
 [@ekblom2010] in one run, which is quicker and cheaper than
 using the traditional Sanger method.
 
-Research in phylogenomics, using many more genes from genome sequencing
-[@wahlberg2008], would be accelerated by using NGS due to the ease to obtaining
-DNA data at massive scale. It would be very easy  to sequence many more than 
-the 12 to 19 loci that so far have been used in phylogenomic studies 
+Research in phylogenomics would be accelerated by using NGS due to the ease
+to obtaine DNA data at massive scale. It would be very easy  to sequence many
+more than the 12 to 19 loci that so far have been used in phylogenomic studies 
 [@wahlberg2008; @regier2013].
 
 However, researchers have been relying on the Sanger method for sequencing a
@@ -60,9 +59,10 @@ lengths across taxa and would prove difficult to assess homology for phylogeneti
 studies.
 
 @wahlberg2008 obtained candidate genes for phylogenomics by identifying single
-copy and orthologus genes of *Bombyx mori* from EST libraries. EST sequences
-were searched in the *Bombyx mori* genome in order to identify suitable exons.
+copy and orthologus genes of *Bombyx mori* from EST libraries. They searched for
+EST sequences in the *Bombyx mori* genome in order to identify suitable exons.
 These exon sequences were compared against EST libraries of related Lepidoptera
+species
 in order to obtain homologous sequences for primer design. Thus, this method
 depends on the availability of EST sequences which are single reads of cDNA that 
 might contain numerous errors and are prone to artefacts [@parkinson2002].
@@ -73,12 +73,16 @@ practice due to several reasons: (i) genomic DNA does not degrade so quickly as 
 dry material (for example museum specimens); and (iv) it is the most commonly used
 DNA in molecular systematics.
 
+Thus, it is needed a way to find candidate genes that can be easily sequenced
+from genomic DNA across several lineages.
 One strategy to fulfill this goal could be comparing genomic sequences of  model
-species and extract suitable genes that can be sequenced in novel species from its
-genomic DNA. 
+species and extract suitable genes that can be sequenced in novel species from 
+simple extractions of genomic DNA. 
 
-In this paper, we describe a protocol for finding genes in genomic DNA suitable for
-phylogenomic studies. We have developed bioinformatic tools to help harvesting genes
+In this paper, we describe a complete protocol for finding genes in genomic DNA
+suitable for phylogenomic studies, sequencing of those genes using NGS techonology,
+and data analysis of the NGS output.
+We have developed bioinformatic tools to help harvesting genes
 from  genomes available in public databases. We have also optimized a wet lab protocol
 for sequencing the found genes using NGS technology. Additionally, we  have developed
 bioinformatic tools for analysis of the raw data from NGS. Our software has been
@@ -91,12 +95,15 @@ common software for phylogenetic inference.
 
 ## Finding candidate genes from *Bombyx mori*
 
-We decided to use the *Bombyx mori* genome as starting point (although any genome can
-be used) to obtain candidate genes suitable for sequencing across novel species.
-As explaine in the introduction, genes to be used in phylogenetic inference have to
-fulfill the following requirements: (i) Our genes should be orthologs; (ii) Our genes
+We are interested in studing the phylogenetic relationships of lineages in the 
+Lepidoptera. Hence, we decided to use the *Bombyx mori* genome as starting point 
+(although any genome can be used) to obtain candidate genes suitable for sequencing
+across novel species.
+As explained in the introduction, genes to be used in phylogenetic inference have to
+fulfill the following requirements: (i) the genes should be orthologs; (ii) the genes
 should be single-copy genes; (iii) their sequence need to be around 251 DNA base pairs
-in length for easy sequencing in our Next Generation Sequencer available, IonTorrent_.
+in length for easy sequencing in our in-house Next Generation Sequencer, an IonTorrent
+Ion PGM Sequencer from Life Technologies (<http://www.iontorrent.com/>).
 
 The OrthoDB database <ftp://cegg.unige.ch/OrthoDB6/> has a catalog of orthologous
 protein-coding genes for vertebrates, arthropods and other living groups.
@@ -105,17 +112,16 @@ We parsed this list with the module OrthoDB from our package PyPhyloGenomics and
 obtained a list of single-copy, orthologous gene IDs for *Bombyx mori* (12 167 genes
 in total).
 
-By using the module BLAST of PyPhyloGenomics, we were able to obtain the gene sequence
-for our list from the CDS sequences for *Bombyx mori*. And this list of sequences
-were blasted against the *Bombyx mori* genome in order to make sure that our sequences
+A function in our module BLAST of PyPhyloGenomics extracted those gene sequences from
+the *Bombyx mori* CDS sequences. Using our module BLAST, we blasted against the *Bombyx mori* genome in order to make sure that our sequences
 are free of introns.
 
-We also filtered these genes to be at least 300bp in length, are separated by at least 
-810kb so that they can be considered independent evolutionary entities.
+We filtered these genes to keep those of at least 300bp in length, and separated by
+at least 810kb so that they can be considered independent evolutionary entities.
 
 At the end we obtained 575 exons in frame.
 
-Then we executed exon validation by searching these exons in other genomes of Lepidoptera
+We executed exon validation by searching these exons in other genomes of Lepidoptera
 species such as, *Danaus*, *Heliconius* and *Manduca*,
 
 This search is automated by using functions in our module BLAST that take as input 
@@ -123,11 +129,13 @@ the list of genes from *Bombyx mori*, and the file with genomic sequences for th
 species.
 
 PyPhyloGenomics also has tools to create fasta files for those exons that were found in
-the other species' genomes. It also automates the alignment by using MUSCLE.
+the other species' genomes. It also automates the alignment of sequences by using 
+the software MUSCLE.
 
 PyPhyloGenomics contains functions to automatically design degenerate primers from the
 homologous sequences by delivering the sequences to primer4clades and receiving the 
-designed primers.
+designed primers. primer4clades is a web service based on the CODEHOP strategy for 
+primer design [@contreras2009].
 
 It is recomended that both alignment and designed primers to be analyzed carefully 
 to make sure that the are no problems.
