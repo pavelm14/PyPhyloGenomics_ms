@@ -138,28 +138,33 @@ genes ready to be sequenced across novel species in Lepidoptera for many species
 if NGS techniques are used.
 
 ### Sample preparation for Next Generation Sequencing in IonTorrent
-We followed the library preparation protocol for NGS by @meyer2010 that can be 
-adapted for the IonTorrent technology. This method consist in attaching and index
-(or barcode) to the sequences of each specimen for later identification. Therefore,
-it is possible to separate reads from the NGS data using these indexes.
+We followed the library preparation protocol for NGS by @meyer2010 with minor
+modifications  for the IonTorrent technology.
+This method consist in attaching and index
+(or barcode) to the amplified PCR products of each specimen previous to 
+sequencing.
+Therefore, it will be possible to separate reads from the NGS data using these
+indexes.
 
 We sequenced several individuals of a wide range of species in the Lepidoptera. We
-also sequenced a specimen XX_Code_XX of *Bombyx mori* as control for our lab and
-NGS assembly data protocols.
+also sequenced a specimen XX_Code_XX of *Bombyx mori* as control sample in order
+to validate our NGS data assembly protocols.
 
 The IonTorrent platform 2 can sequence from 280 to 320bp in total. The Iontorrent
-adapter, index and primer sequences leave around 201bp as the maximum internal
-gene region sequenced (region within degenerate primers) (Table 1).
+adapter, index and primer sequences make around 119 base pairs in length, 
+leaving around 201 bp as the maximum internal gene region that can be sequenced
+(region within degenerate primers) (Table 1). This is the region per gene (or exon)
+that is potentially informative for phylogenetic inference.
 
 **Table 1.** Adaptors and primers needed for sequencing in the NGS Iontorrent platform 2. 
 The maximum length of sequenced amplicon is \~ 201 bp after discarding primer regions.
 
-  Primer                Length (bp)
+  Primer                 Length (bp)
   --------------------  ------------
   Adapter A             30
   5' Index              8
   5' Degenerate Primer  25
-  Exon                  **???**
+  Exon                  **119**
   3' Degenerate Primer  25
   3' Index              8
   Adapter P             23
@@ -168,8 +173,37 @@ The maximum length of sequenced amplicon is \~ 201 bp after discarding primer re
 
 
 ## Next Generation output analysis
-### find barcodes
+The raw output data of the IonTorrent is a FASTQ format file of XXX MB? and XXX
+short reads up to XX bp in length. 
+We created a BLAST database with the exon sequences  of candidate genes found
+after the exon validation of *B. mori*  genes across the genomes of the model
+Lepidoptera species.
+We used this database and BLASTn in order to find NGS reads matching the expected
+candidate genes. All reads were separated in bins according to the matching 
+candidate genes.
+
+We separated reads from each bin
+according to each specimen index (or barcode). Iontorrent recovered many reads
+with errors in the barcode section. During our division of reads according to 
+indexes. Thus we compared the sequenced index region with our indexes and measured
+the Levenshtein distance in order to measure number of nucleotides that differed
+between two indexes. We assumed indexes to be the same if the Levenshtein distance
+was smaller than 2 units. Our module XXX in PyPhyloGenomics is able to do the 
+separation according to indexes taking into account Levenshtein distances and compare
+the indexes with forward and reverse complements.
+
+We assembled consensus sequences for each bin containing reads for specimen
+after quality control using fastx tools and assebly using velvet. 
+
+Our functions in PyPhyloGenomics automate this process and require as input
+the parameters needed for triming low quality reads, triming of indexes and 
+coverage threshold for assembly in velvet.
+
+The output file is a FASTA format file containing the assembled sequences per
+specimen and gene.
+
 ### find primers
+### find barcodes
 ### quality control of reads
 ### de novo assembly using velvet
 ### alignment and storage in VoSeq?
