@@ -17,11 +17,13 @@ data/silkcds.fa:
 	tar -zxvf data/silkworm_glean_cds.fa.tar.gz -C data/
 
 # Bombyx mori genome 
-data/silkworm_genome_v2.0.fa: 
-	wget ftp://silkdb.org/pub/current/Genome/silkworm_genome_v2.0.fa.tar.gz
-	mv silkworm_genome_v2.0.fa.tar.gz data/.
+data/silkworm_genome_v2.0.fa.tar.gz: 
+	curl -0 ftp://silkdb.org/pub/current/Genome/silkworm_genome_v2.0.fa.tar.gz > data/silkworm_genome_v2.0.fa.tar.gz
+
+
+data/silkgenome.fa: data/silkworm_genome_v2.0.fa.tar.gz
 	tar -zxvf data/silkworm_genome_v2.0.fa.tar.gz -C data/
 
-gene_search: data/OrthoDB6_Arthropoda_tabtext.csv data/silkcds.fa data/silkworm_genome_v2.0.fa
+gene_search: data/OrthoDB6_Arthropoda_tabtext.csv data/silkcds.fa data/silkgenome.fa
 	echo "Done"
 
