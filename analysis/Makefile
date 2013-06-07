@@ -11,7 +11,17 @@ data/OrthoDB6_Arthropoda_tabtext.csv:
 	mv data/OrthoDB6_Arthropoda_tabtext data/OrthoDB6_Arthropoda_tabtext.csv
 
 # Bombyx mori CDS
+data/silkcds.fa:
+	wget ftp://silkdb.org/pub/current/Gene/Glean_genes/silkworm_glean_cds.fa.tar.gz
+	mv silkworm_glean_cds.fa.tar.gz data/.
+	tar -zxvf data/silkworm_glean_cds.fa.tar.gz -C data/
 
-gene_search: data/OrthoDB6_Arthropoda_tabtext.csv
+# Bombyx mori genome 
+data/silkworm_genome_v2.0.fa: 
+	wget ftp://silkdb.org/pub/current/Genome/silkworm_genome_v2.0.fa.tar.gz
+	mv silkworm_genome_v2.0.fa.tar.gz data/.
+	tar -zxvf data/silkworm_genome_v2.0.fa.tar.gz -C data/
+
+gene_search: data/OrthoDB6_Arthropoda_tabtext.csv data/silkcds.fa data/silkworm_genome_v2.0.fa
 	echo "Done"
 
