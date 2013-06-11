@@ -26,7 +26,7 @@ One application of NGS is targeted sequencing of numerous loci of interest
 using the traditional Sanger method.
 
 Research in phylogenomics would be accelerated by using NGS due to the ease
-to obtaine DNA data at massive scale. It would be very easy  to sequence many
+to obtain DNA data at massive scale. It would be very easy  to sequence many
 more than the 12 to 19 loci that so far have been used in phylogenomic studies 
 [@wahlberg2008; @regier2013].
 
@@ -37,7 +37,10 @@ groups [@matos2013; @regier2013; @pena2011].
 One issue to develop is a way to obtain candidate genes suitable for
 phylogenetic inference, i.e. orthologous, single copy genes, lack of introns, etc.
 
-* why orthologous
+Ortholog genes are those that share a common ancestor during their evolutionary 
+history and can be considered as homologous structures useful for comparative 
+systematics.
+
 * why single copy
 * why no introns
 * why separated by xxxx distance
@@ -80,7 +83,7 @@ species and extract suitable genes that can be sequenced in novel species from
 simple extractions of genomic DNA. 
 
 In this paper, we describe a complete protocol for finding genes in genomic DNA
-suitable for phylogenomic studies, sequencing of those genes using NGS techonology,
+suitable for phylogenomic studies, sequencing of those genes using NGS technology,
 and data analysis of the NGS output.
 We have created the software package PyPhyloGenomics that includes bioinformatic
 tools required for automated gene finding, primer design and NGS data analysis
