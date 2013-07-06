@@ -1,14 +1,16 @@
 % PyPhyloGenomics: toolkit and protocol for developing phylogenetic markers in novel species for Next Generation Sequence data
-% Carlos Peña^1^; Victor Solis^2^; Pável Matos^3^; Chris Wheat^4^
+% Carlos Peña^*,1^; Victor Solis^2^; Pável Matos^3^; Chris Wheat^4^
 % 2013-05-08
 
-^1^ Laboratory of Genetics, Department of Biology, University of Turku, Turku, Finland. Email: <mycalesis@gmail.com>
+^1^Laboratory of Genetics, Department of Biology, University of Turku, Turku, Finland
 
 ^2^
 
-^3^
+^3^Biology Centre AS CR, v.v.i., Institute of Entomology, Ceske Budejovice, Czech Republic
 
-^4^
+^4^Population Genetics, Department of Zoology, Stockholm University, Stockholm, Sweden
+
+***Corresponding author:** E-mail: <mycalesis@gmail.com>
 
 # Introduction
 Next Generation Sequencing (NGS) is considered a quantum leap in improvement
@@ -105,7 +107,7 @@ As explained in the introduction, genes to be used in phylogenetic inference
 have to fulfill the following requirements: (i) the genes should be orthologs;
 (ii) the genes should be single-copy genes; (iii) their sequence need to be
 around 251 DNA base pairs in length for easy sequencing in our in-house Next
-Generation Sequencer, an IonTorrent Ion PGM Sequencer from Life Technologies
+Generation Sequencer, an Ion Torrent PGM sequencer from Life Technologies
 (<http://www.iontorrent.com/>).
 
 The OrthoDB database <ftp://cegg.unige.ch/OrthoDB6/> has a catalog of orthologous
@@ -141,9 +143,9 @@ carefully to make sure that the are no problems. After this step, one can
 have around XXX genes ready to be sequenced across novel species in 
 Lepidoptera for many species if NGS techniques are used.
 
-### Sample preparation for Next Generation Sequencing in IonTorrent
+### Sample preparation for Next Generation Sequencing in Ion Torrent
 We followed the library preparation protocol for NGS by @meyer2010 with minor
-modifications  for the IonTorrent technology.
+modifications  for the Ion Torrent technology.
 This method consists in attaching and index
 (or barcode) to the amplified PCR products of each specimen previous to 
 sequencing.
@@ -155,13 +157,13 @@ We also sequenced specimens of the model species *Bombyx mori*, *Danaus?*,
 (codes ``XXX``)  as control samples in order to validate our NGS
 data assembly protocols.
 
-The IonTorrent platform 2 can sequence from 280 to 320bp per read. The Iontorrent
+The Ion Torrent platform 2 can sequence from 280 to 320bp per read. The Ion Torrent
 adapter, index and primer sequences make around 119 base pairs in length, 
 leaving around 201 bp as the maximum internal gene region that can be sequenced
 (region within degenerate primers) (Table 1). This is the region per gene 
 (or exon) that is potentially informative for phylogenetic inference.
 
-**Table 1.** Adaptors and primers needed for sequencing in the NGS Iontorrent
+**Table 1.** Adaptors and primers needed for sequencing in the NGS Ion Torrent
 platform 2. 
 The maximum length of sequenced amplicon is \~ 201 bp after discarding primer
 regions.
@@ -180,7 +182,7 @@ regions.
 
 
 ## Next Generation output analysis
-The raw output data of the IonTorrent was a FASTQ format file of XXX MB? and XXX
+The raw output data of the Ion Torrent was a FASTQ format file of XXX MB? and XXX
 short reads up to XX bp in length. 
 We created a BLAST database with the exon sequences  of candidate genes found
 after the exon validation of *B. mori*  genes across the genomes of the model
