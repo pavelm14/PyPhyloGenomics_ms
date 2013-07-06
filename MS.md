@@ -14,7 +14,7 @@
 
 # Introduction
 Next Generation Sequencing (NGS) is considered a quantum leap in improvement
-in techniques for DNA sequencing.
+in techniques for DNA sequencing [@loman2012].
 The sequencing output of NGS technology is around 30 gigabases of DNA in one
 single run [@reis2009] while the traditional Sanger method [@sanger1977] allows
 sequencing only \~1,000 bp per specimen in the old capillary-based technology.
@@ -23,25 +23,23 @@ products based on DNA synthesis using micron-scale beads on planar substrates
 (a microchip) [@shendure2008].
 As a result, millions of copies of sequences (reads) are produced from the DNA
 templates. 
-One application of NGS is targeted sequencing of numerous loci of interest
-[@ekblom2010] in one run, which is quicker and cheaper than
-using the traditional Sanger method.
+One application of NGS is targeted sequencing of numerous loci of interest in
+one run [@ekblom2010], which is quicker and cheaper than using the Sanger
+method.
 
-Research in phylogenomics would be accelerated by using NGS due to the ease
+Research in phylogenomics can be accelerated by using NGS due to the ease
 to obtain DNA data at massive scale. It would be very easy  to sequence many
 more than the 12 to 19 loci that so far have been used in phylogenomic studies 
 [@wahlberg2008; @regier2013].
-
 However, researchers have been relying on the Sanger method for sequencing a
 handful of genes to be used in phylogenetic inference in several Lepidoptera
 groups [@matos2013; @regier2013; @pena2011].
 
 One issue to develop is a way to obtain candidate genes suitable for
-phylogenetic inference, i.e. orthologous, single copy genes, lack of introns, etc.
-
+phylogenetic inference, i.e. orthologs, single copy genes, lack of introns, etc.
 Ortholog genes are those that share a common ancestor during their evolutionary 
-history and can be considered as homologous structures useful for comparative 
-systematics.
+history [@chiu2006] and can be considered as homologous structures useful for 
+comparative systematics.
 
 * why single copy
 * why no introns
@@ -55,44 +53,44 @@ drawback that these molecules are not easy to sequence from genomic DNA as miRNA
 are processed in the cell and shortened to \~ 22 base pair sequences
 [@wienholds2005].
 
-@regier2013 obtained their sequences from mRNA by performing reverse transcription
-and PCR amplification [@regier2007]. mRNAs are molecules transcribed from
-genomic DNA that have had introns spliced and exons joined. Therefore, attempting
-to sequence these genes from genomic DNA for other species will be troublesome
-due to the likely appearance of introns. Intron sequences can be of various
-lengths across taxa and would prove difficult to assess homology for phylogenetic
-studies.
+@regier2013 obtained nuclear gene sequences from mRNA by performing reverse 
+transcription and PCR amplification [@regier2007]. mRNAs are molecules 
+transcribed from genomic DNA that have had introns spliced and exons joined.
+Therefore, attempting to sequence these genes from genomic DNA for other 
+species will be troublesome due to the likely appearance of introns. Intron
+sequences can be of various lengths across taxa and would prove difficult 
+to assess homology for phylogenetic studies.
 
 @wahlberg2008 obtained candidate genes for phylogenomics by identifying single
 copy and orthologus genes of *Bombyx mori* from EST libraries. They searched for
 EST sequences in the *Bombyx mori* genome in order to identify suitable exons.
 These exon sequences were compared against EST libraries of related Lepidoptera
-species
-in order to obtain homologous sequences for primer design. Thus, this method
-depends on the availability of EST sequences which are single reads of cDNA that 
-might contain numerous errors and are prone to artefacts [@parkinson2002].
+species in order to obtain homologous sequences for primer design. Thus, this
+method depends on the availability of EST sequences which are single reads of
+cDNA that might contain numerous errors and are prone to artefacts 
+[@parkinson2002].
 
-According to @wahlberg2008, it is easier to employ  genomic DNA for phylogenetic
+According to @wahlberg2008, it is easier to employ genomic DNA for phylogenetic
 practice due to several reasons: (i) genomic DNA does not degrade so quickly as RNA;
 (ii) it is simpler to preserve in the field; (iii) it can be sequenced even from
 dry material (for example museum specimens); and (iv) it is the most commonly used
 DNA in molecular systematics.
 
-Thus, it is needed a way to find candidate genes that can be easily sequenced
+Thus, a method is needed to find candidate genes that can be easily sequenced
 from genomic DNA across several lineages.
-One strategy to fulfill this goal could be comparing genomic sequences of  model
+One strategy to fulfill this goal could be comparing genomic sequences of model
 species and extract suitable genes that can be sequenced in novel species from 
 simple extractions of genomic DNA. 
 
-In this paper, we describe a complete protocol for finding genes in genomic DNA
-suitable for phylogenomic studies, sequencing of those genes using NGS technology,
-and data analysis of the NGS output.
-We have created the software package PyPhyloGenomics that includes bioinformatic
-tools required for automated gene finding, primer design and NGS data analysis
-Our software has been
-developed to filter the output reads from NGS and assemble the sequences for each
-specimen and their sequenced genes so that datasets can be assembled for analysis in 
-common software for phylogenetic inference.
+In this paper, we describe a protocol for finding genes from genomic DNA that 
+are suitable for phylogenomic studies. 
+We describe the software package PyPhyloGenomics, written in Python language,
+that includes bioinformatic tools useful for automated gene finding, primer 
+design and NGS data analysis. We have used this software to find homologous 
+exons across genomes from several model organisms.
+Our software also includes tools to filter output reads from NGS and assemble
+the sequences for each specimen and their sequenced genes so that datasets can
+be assembled for analysis in common software for phylogenetic inference.
 
 
 # Methods
