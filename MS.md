@@ -41,6 +41,13 @@ Ortholog genes are those that share a common ancestor during their evolutionary
 history [@chiu2006] and can be considered as homologous structures useful for 
 comparative systematics.
 
+Gene duplication is a common phenomenon in animals and plants [@duarte2010]
+producing paralog genes with a degree of similarity depending on time of
+divergence since duplication. Paralog genes are problematic for phylogenetic
+inference and these are not normally useful [@sanderson2002].
+Duplicated genes or paralogs are known to cause error and artifacts
+if used in phylogenetic inference [@sanderson2002; @fares2005].
+
 * why single copy
 * why no introns
 * why separated by xxxx distance
