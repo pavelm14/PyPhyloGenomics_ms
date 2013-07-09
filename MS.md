@@ -42,14 +42,18 @@ history [@chiu2006] and can be considered as homologous structures useful for
 comparative systematics.
 
 Gene duplication is a common phenomenon in animals and plants [@duarte2010]
-producing paralog genes with a degree of similarity depending on time of
-divergence since duplication. Paralog genes are problematic for phylogenetic
-inference and these are not normally useful [@sanderson2002].
-Duplicated genes or paralogs are known to cause error and artifacts
-if used in phylogenetic inference [@sanderson2002; @fares2005].
+producing paralog genes with a degree of similarity depending on the time of
+divergence since duplication. Paralogs are problematic for phylogenetic
+inference and these are not normally used because they can cause error and
+artifacts [@sanderson2002; @fares2005].
 
-* why single copy
-* why no introns
+Eukaryotic genes contain introns, sequences that are discarded during the 
+process of protein synthesis [@page1998] and can vary widely in size among 
+different species [@carvalho1999]. Thus, it might be difficult to assess homology
+base pair positions if the sequences vary in length among the studied novel species.
+However, introns have been useful in phylogenetic studies of certain organisms
+[e.g. @prychitko1997; @fujita2004].
+
 * why separated by xxxx distance
 
 Indeed some studies have used NSG techniques to study phylogenetics at the 
