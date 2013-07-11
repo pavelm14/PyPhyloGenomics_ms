@@ -47,18 +47,11 @@ divergence since duplication. Paralogs are problematic for phylogenetic
 inference and these are not normally used because they can cause error and
 artifacts [@sanderson2002; @fares2005].
 
-Eukaryotic genes contain introns, sequences that are discarded during the 
-process of protein synthesis [@page1998] and can vary widely in size among 
-different species [@carvalho1999]. Thus, it might be difficult to assess homology
-base pair positions if the sequences vary in length among the studied novel species.
-However, introns have been useful in phylogenetic studies of certain organisms
-[e.g. @prychitko1997; @fujita2004].
-
 * why separated by xxxx distance
 
-Indeed some studies have used NSG techniques to study phylogenetics at the 
-genomic level using miRNAs for higher level phylogeny in Arthropoda
-[@campbell2011]. miRNAs are nonprotein coding RNAs of small length involved in
+Some studies have used NSG techniques to sequence miRNAs in phylogenomic analyses 
+of the high level relationships in Panarthropoda [@campbell2011].
+miRNAs are nonprotein coding RNAs of small length involved in
 DNA transcription and gene regulation. Using miRNAs for phylogenetics has the
 drawback that these molecules are not easy to sequence from genomic DNA as miRNAs
 are processed in the cell and shortened to \~ 22 base pair sequences
@@ -68,24 +61,30 @@ are processed in the cell and shortened to \~ 22 base pair sequences
 transcription and PCR amplification [@regier2007]. mRNAs are molecules 
 transcribed from genomic DNA that have had introns spliced and exons joined.
 Therefore, attempting to sequence these genes from genomic DNA for other 
-species will be troublesome due to the likely appearance of introns. Intron
-sequences can be of various lengths across taxa and would prove difficult 
-to assess homology for phylogenetic studies.
+species will be troublesome due to the likely appearance of introns. 
+Eukaryotic genes contain introns, sequences that are discarded during the 
+process of protein synthesis [@page1998] and can vary widely in size among 
+different species [@carvalho1999]. Thus, it might be difficult to assess homology
+base pair positions if the sequences vary in length among the studied novel
+species.
+However, introns have been useful in phylogenetic studies of certain organisms
+[e.g. @prychitko1997; @fujita2004].
+
 
 @wahlberg2008 obtained candidate genes for phylogenomics by identifying single
 copy and orthologus genes of *Bombyx mori* from EST libraries. They searched for
 EST sequences in the *Bombyx mori* genome in order to identify suitable exons.
 These exon sequences were compared against EST libraries of related Lepidoptera
-species in order to obtain homologous sequences for primer design. Thus, this
+species in order to obtain homologous sequences for primer design. This
 method depends on the availability of EST sequences which are single reads of
 cDNA that might contain numerous errors and are prone to artefacts 
 [@parkinson2002].
 
-According to @wahlberg2008, it is easier to employ genomic DNA for phylogenetic
-practice due to several reasons: (i) genomic DNA does not degrade so quickly as RNA;
-(ii) it is simpler to preserve in the field; (iii) it can be sequenced even from
-dry material (for example museum specimens); and (iv) it is the most commonly used
-DNA in molecular systematics.
+It is easier to employ genomic DNA for phylogenetic
+practice due to several reasons: (i) genomic DNA does not degrade so quickly as
+RNA; (ii) it is simpler to preserve in the field; (iii) it can be sequenced even
+from dry material (for example museum specimens); and (iv) it is the most
+commonly used DNA in molecular systematics [@wahlberg2008].
 
 Thus, a method is needed to find candidate genes that can be easily sequenced
 from genomic DNA across several lineages.
