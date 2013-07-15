@@ -27,8 +27,11 @@ One application of NGS is targeted sequencing of numerous loci of interest in
 one run [@ekblom2010], which is quicker and cheaper than using the Sanger
 method.
 
-Research in phylogenomics can be accelerated by using NGS due to the ease
-to obtain DNA data at massive scale. It would be very easy  to sequence many
+However, NGS is not widely used in phylogenetics and the difficulty in finding
+variable loci in non-model organisms is cited as one of the impeding
+reasons [@mccormack2013].
+Research in phylogenomics will be accelerated by using NGS due to the ease
+to obtain DNA data at massive scale. It would be very easy to sequence many
 more than the 12 to 19 loci that so far have been used in phylogenomic studies 
 [@wahlberg2008; @regier2013].
 However, researchers have been relying on the Sanger method for sequencing a
@@ -62,9 +65,10 @@ transcription and PCR amplification [@regier2007]. mRNAs are molecules
 transcribed from genomic DNA that have had introns spliced and exons joined.
 Therefore, attempting to sequence these genes from genomic DNA for other 
 species will be troublesome due to the likely appearance of introns. 
-Eukaryotic genes contain introns, sequences that are discarded during the 
+Introns are sequences present in eukaryotic genes that are discarded during the 
 process of protein synthesis [@page1998] and can vary widely in size among 
-different species [@carvalho1999]. Thus, it might be difficult to assess homology
+different species [@carvalho1999].
+Thus, it might be difficult to assess homology for 
 base pair positions if the sequences vary in length among the studied novel
 species.
 However, introns have been useful in phylogenetic studies of certain organisms
