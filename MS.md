@@ -27,30 +27,13 @@ One application of NGS is targeted sequencing of numerous loci of interest in
 one run [@ekblom2010], which is quicker and cheaper than using the Sanger
 method.
 
-However, NGS is not widely used in phylogenetics and the difficulty in finding
-variable loci in non-model organisms is cited as one of the impeding
-reasons [@mccormack2013].
-Research in phylogenomics will be accelerated by using NGS due to the ease
-to obtain DNA data at massive scale. It would be very easy to sequence many
+Research in phylogenomics can be accelerated by using NGS due to the ease
+to obtain DNA data at massive scale. It would be very easy  to sequence many
 more than the 12 to 19 loci that so far have been used in phylogenomic studies 
 [@wahlberg2008; @regier2013].
 However, researchers have been relying on the Sanger method for sequencing a
 handful of genes to be used in phylogenetic inference in several Lepidoptera
-groups [@matos2013; @regier2013; @pena2011].
-
-One issue to develop is a way to obtain candidate genes suitable for
-phylogenetic inference, i.e. orthologs, single copy genes, lack of introns, etc.
-Ortholog genes are those that share a common ancestor during their evolutionary 
-history [@chiu2006] and can be considered as homologous structures useful for 
-comparative systematics.
-
-Gene duplication is a common phenomenon in animals and plants [@duarte2010]
-producing paralog genes with a degree of similarity depending on the time of
-divergence since duplication. Paralogs are problematic for phylogenetic
-inference and these are not normally used because they can cause error and
-artifacts [@sanderson2002; @fares2005].
-
-* why separated by xxxx distance
+groups [@matos2013; -@regier2013; @pena2011].
 
 Some studies have used NSG techniques to sequence miRNAs in phylogenomic analyses 
 of the high level relationships in Panarthropoda [@campbell2011].
@@ -60,7 +43,28 @@ drawback that these molecules are not easy to sequence from genomic DNA as miRNA
 are processed in the cell and shortened to \~ 22 base pair sequences
 [@wienholds2005].
 
-@regier2013 obtained nuclear gene sequences from mRNA by performing reverse 
+One issue to develop is a strategy to develop molecular markers or 
+candidate genes suitable for phylogenetic inference, i.e. orthologs,
+single copy genes, lack of introns, etc.
+Ortholog genes are those that share a common ancestor during their evolutionary 
+history [@chiu2006] and can be considered as homologous structures useful for 
+comparative systematics.
+Gene duplication is a common phenomenon in animals and plants [@duarte2010]
+producing paralog genes with a degree of similarity depending on the time of
+divergence since duplication. Paralogs are problematic for phylogenetic
+inference and these are not normally used because they can cause error and
+artifacts [@sanderson2002; @fares2005].
+
+-@wahlberg2008 obtained candidate genes for phylogenomics by identifying single
+copy and orthologus genes of *Bombyx mori* from EST libraries. They searched for
+EST sequences in the *Bombyx mori* genome in order to identify suitable exons.
+These exon sequences were compared against EST libraries of related Lepidoptera
+species in order to obtain homologous sequences for primer design. This
+method depends on the availability of EST sequences which are single reads of
+cDNA that might contain numerous errors and are prone to artefacts 
+[@parkinson2002].
+
+-@regier2013 obtained nuclear gene sequences from mRNA by performing reverse 
 transcription and PCR amplification [@regier2007]. mRNAs are molecules 
 transcribed from genomic DNA that have had introns spliced and exons joined.
 Therefore, attempting to sequence these genes from genomic DNA for other 
@@ -74,21 +78,21 @@ species.
 However, introns have been useful in phylogenetic studies of certain organisms
 [e.g. @prychitko1997; @fujita2004].
 
-
-@wahlberg2008 obtained candidate genes for phylogenomics by identifying single
-copy and orthologus genes of *Bombyx mori* from EST libraries. They searched for
-EST sequences in the *Bombyx mori* genome in order to identify suitable exons.
-These exon sequences were compared against EST libraries of related Lepidoptera
-species in order to obtain homologous sequences for primer design. This
-method depends on the availability of EST sequences which are single reads of
-cDNA that might contain numerous errors and are prone to artefacts 
-[@parkinson2002].
-
-It is easier to employ genomic DNA for phylogenetic
-practice due to several reasons: (i) genomic DNA does not degrade so quickly as
+Nuclear protein coding loci (NPCL) are the preferred markers in phylogenetic 
+inference due to appropiate mutation rates, effortless alignment of sequences
+and detection of paralogs [@townsend2008].
+Moreover, genomic DNA can be used for sequencing NPCL, which has 
+several advantages: (i) genomic DNA does not degrade so quickly as
 RNA; (ii) it is simpler to preserve in the field; (iii) it can be sequenced even
 from dry material (for example museum specimens); and (iv) it is the most
-commonly used DNA in molecular systematics [@wahlberg2008].
+commonly used DNA in molecular systematics [-@wahlberg2008].
+
+-@townsend2008 found candidate protein coding genes by BLASTing the genomes
+*Fugu rubripes* (pufferfish) and *Homo sapiens*. The shared NPCL were compared
+to the genomes of other species in order to assess exon limits, align homologous
+sequences and design primers. Paralog genes were identified as those form the 
+*Fugu* genome that matched more than one *Homo* gene.
+ 
 
 Thus, a method is needed to find candidate genes that can be easily sequenced
 from genomic DNA across several lineages.
@@ -235,7 +239,7 @@ creation of datasets to be used in phylogenetic analysis later on.
 
 
 ## Comparison with other methods
-@regier2009, @regier2008, @regier2013 use Reverse Transcription PCR from mRNAs to avoid sequencing introns, although the corresponing genomic DNA sequences are  likely to include introns. Therefore if one use their genes, it is not recommended to do "direct gene amplification" [@regier2007].
+@regier2009, @regier2008, -@regier2013 use Reverse Transcription PCR from mRNAs to avoid sequencing introns, although the corresponing genomic DNA sequences are  likely to include introns. Therefore if one use their genes, it is not recommended to do "direct gene amplification" [-@regier2007].
 
 ## Other software
 CEPiNS [@hasan2013] is a software pipeline that uses predicted gene sequences
