@@ -17,7 +17,7 @@ Next Generation Sequencing (NGS) is considered a quantum leap in improvement
 in techniques for DNA sequencing [@loman2012].
 The sequencing output of NGS technology is around 30 gigabases of DNA in one
 single run [@reis2009] while the traditional Sanger method [@sanger1977] allows
-sequencing only \~1,000 bp per specimen in the old capillary-based technology.
+sequencing only \~1,000 bp per specimen in the capillary-based electrophoresis.
 This higher yield is achieved by using massive parallel sequencing of PCR
 products based on DNA synthesis using micron-scale beads on planar substrates
 (a microchip) [@shendure2008].
@@ -41,9 +41,9 @@ miRNAs are nonprotein coding RNAs of small length involved in
 DNA transcription and gene regulation. Using miRNAs for phylogenetics has the
 drawback that these molecules are not easy to sequence from genomic DNA as miRNAs
 are processed in the cell and shortened to \~ 22 base pair sequences
-[@wienholds2005].
+[@wienholds2005], as well as those are usually degraded in old samples.
 
-One issue to develop is a strategy to develop molecular markers or 
+One issue to develop is a strategy to generate molecular markers or 
 candidate genes suitable for phylogenetic inference, i.e. orthologs,
 single copy genes, lack of introns, etc.
 Ortholog genes are those that share a common ancestor during their evolutionary 
@@ -76,7 +76,7 @@ Thus, it might be difficult to assess homology for
 base pair positions if the sequences vary in length among the studied novel
 species.
 However, introns have been useful in phylogenetic studies of certain organisms
-[e.g. @prychitko1997; @fujita2004].
+[e.g. @prychitko1997; @fujita2004], especially at species and population levels due to their higher variability.
 
 Nuclear protein coding loci (NPCL) are the preferred markers in phylogenetic 
 inference due to appropiate mutation rates, effortless alignment of sequences
@@ -98,13 +98,15 @@ Thus, a method is needed to find candidate genes that can be easily sequenced
 from genomic DNA across several lineages.
 One strategy to fulfill this goal could be comparing genomic sequences of model
 species and extract suitable genes that can be sequenced in novel species from 
-simple extractions of genomic DNA. 
+simple extractions of genomic DNA.
+
+Talk about IonTorrent briefly? we are using this as the primary NGS platform for PyPhyloGenomics... we can say something like it's cheap and fast to run compared to 454 and Illumina, suitable for small labs with not so high budget (as in museums, taxonomical institutions, etc).. (Loman et al 2012, nature biotechnology)
 
 In this paper, we describe a protocol for finding genes from genomic DNA that 
 are suitable for phylogenomic studies. 
 We describe the software package PyPhyloGenomics, written in Python language,
 that includes bioinformatic tools useful for automated gene finding, primer 
-design and NGS data analysis. We have used this software to find homologous 
+design and NGS data analysis for evolutionary and phylogenetic studies. We have used this software to find homologous 
 exons across genomes from several model organisms.
 Our software also includes tools to filter output reads from NGS and assemble
 the sequences for each specimen and their sequenced genes so that datasets can
@@ -118,7 +120,7 @@ be assembled for analysis in common software for phylogenetic inference.
 We are interested in studing the phylogenetic relationships of lineages in the 
 Lepidoptera. Hence, we decided to use the *Bombyx mori* genome as starting point 
 (although any genome can be used) to obtain candidate genes suitable fo
-r sequencing across novel species.
+r sequencing across novel species. (Comment Pavel, it can be a general study and no need to say we are interested in Lepidoptera, rather we chose this group as a case study due to the relatively-well annotated genome of B. mori, the number of EST libraries described, taxonomically stable insect group at higher level, etc)
 As explained in the introduction, genes to be used in phylogenetic inference
 have to fulfill the following requirements: (i) the genes should be orthologs;
 (ii) the genes should be single-copy genes; (iii) their sequence need to be
